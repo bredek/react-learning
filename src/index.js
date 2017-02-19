@@ -14,24 +14,24 @@ class App extends Component{
         videos: [],
         selectedVideo: null
     };
-    //  init the plugin
-    YTSearch({key: API_KEY, term: 'trend'}, (videos) => {
-      this.setState({
-          videos,
-          selectedVideo:videos[0]
-      });
-      // -- > this.setState({videos: videos});
-    })
+    this.videoSearch('fun')
   }
 
-  videoSearch(terms){
-
+  videoSearch(searchTerms){
+      //  init the plugin
+      YTSearch({key: API_KEY, term: searchTerms}, (videos) => {
+          this.setState({
+              videos,
+              selectedVideo:videos[0]
+          });
+          // -- > this.setState({videos: videos});
+      })
   }
 
   render(){
     return (
         <div>
-            <SearchBar />
+            <SearchBar onSearchInput={searchTerm => this.videoSearch({searchTerm})}/>
             <VideoDetail video={this.state.selectedVideo}/>
             <VideoList
                 onVideoSelect={selectedVideo => this.setState({selectedVideo})}

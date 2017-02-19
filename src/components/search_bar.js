@@ -57,17 +57,17 @@ class SearchBar extends Component{
     constructor(props){
         super(props);
         this.state = {term: 'Intial value'};
+        this.onSearchInput = props.onSearchInput
     }
     render(){
         return (
             <div>
                 <input
                   className="form-control input-l"
-                  value = {this.state.term}
                   type="text"
-                  onChange = {event => this.setState({term: event.target.value})}
+                  onChange = {(event) => this.setState({term: event.target.value})}
                 />
-                <button className="btn btn-primary">Click</button>
+                <button className="btn btn-primary" onClick= {() => this.onSearchInput(this.state.term)}>Click</button>
                 This is the state : {this.state.term}
             </div>
         );
