@@ -56,8 +56,7 @@ import React, {Component} from 'react';
 class SearchBar extends Component{
     constructor(props){
         super(props);
-        this.state = {term: 'Intial value'};
-        this.onSearchInput = props.onSearchInput
+        this.state = {term: ''};
     }
     render(){
         return (
@@ -65,17 +64,18 @@ class SearchBar extends Component{
                 <input
                   className="form-control input-l"
                   type="text"
-                  onChange = {(event) => this.setState({term: event.target.value})}
+                  onChange = {(event) => this.onInputChange(event.target.value)}
                 />
                 <button className="btn btn-primary" onClick= {() => this.onSearchInput(this.state.term)}>Click</button>
-                This is the state : {this.state.term}
             </div>
         );
         // return <input type="text" onChange={this.onInputChange}/>
     }
-    // onInputChange(e){
-    //     console.log(e.target.value);
-    // }
+
+    onInputChange(term){
+       this.setState({term});
+        this.props.onSearchInput(term);
+    }
 };
 
 
