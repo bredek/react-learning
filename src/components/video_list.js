@@ -8,7 +8,10 @@ import VideoListItem from './video_list_item';
 // This could be a simple functional Component
 let VideoList = (props) => {
     const videoItems = props.videos.map((video) => {
-       return <VideoListItem key={video.etag} video={video} />
+       return <VideoListItem
+           onVideoSelect = {props.onVideoSelect}
+           key={video.etag}
+           video={video} />
     });
     return(
         <ul className='col-md-12 list-group'>

@@ -5,14 +5,14 @@ import React from 'react';
 
 // STAGE 1
 // This could be a simple functional Component
-let VideoListItem = ({video}) => {
+let VideoListItem = ({video, onVideoSelect}) => {
 // let VideoListItem = (props) => {
     // const video = props.video;
-    console.log(video);
+    // console.log(video);
     const imageUrl = video.snippet.thumbnails.default.url;
     const imageTitle = video.snippet.title;
     return(
-        <li className="list-group-item">
+        <li onClick={() => onVideoSelect(video)} className="list-group-item">
             <div className="video-list media">
                 <div className="media-left">
                     <img className="media-object" src={imageUrl} alt="media-object"/>

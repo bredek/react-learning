@@ -62,10 +62,12 @@ class SearchBar extends Component{
         return (
             <div>
                 <input
+                  className="form-control input-l"
                   value = {this.state.term}
                   type="text"
                   onChange = {event => this.setState({term: event.target.value})}
                 />
+                <button className="btn btn-primary">Click</button>
                 This is the state : {this.state.term}
             </div>
         );
